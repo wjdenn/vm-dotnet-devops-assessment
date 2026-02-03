@@ -1,0 +1,34 @@
+name: Deploy to K8s (Dev)
+
+on:
+    workflow_dispatch:
+    push:
+        branches:
+            - main
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+        environment: dev
+
+        steps:
+            - name: Checkout source
+              uses: actions/checkout@v4
+
+            - name: Setup Helm
+              uses: azure/setup-helm@v4
+
+            - name: Configure Kube access
+              run: |
+                mkdir -p ~/.kube
+                echo "${{ secrets.KUBECONFIG_DEV }}" > ~/.kube/config
+              shell: bash
+
+            - name: Deploy via Helm
+              run: |
+                helm upgrade --install vm-dotnet-api \
+                    ./helm/app-chart \
+                    --namespace dev \
+                    --create-namespace \
+                    -f ./helm/app-chart/values.yaml \
+                    -f ./helm/app-chart/values-dev.yaml \
+                    --set image.tag=${{ github.sh }}
