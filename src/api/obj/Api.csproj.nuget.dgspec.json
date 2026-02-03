@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/will/github/vm-dotnet-devops-assessment/src/Api/Api.csproj": {}
+    "/Users/will/github/vm-dotnet-devops-assessment/src/api/Api.csproj": {}
   },
   "projects": {
-    "/Users/will/github/vm-dotnet-devops-assessment/src/Api/Api.csproj": {
+    "/Users/will/github/vm-dotnet-devops-assessment/src/api/Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/will/github/vm-dotnet-devops-assessment/src/Api/Api.csproj",
+        "projectUniqueName": "/Users/will/github/vm-dotnet-devops-assessment/src/api/Api.csproj",
         "projectName": "Api",
-        "projectPath": "/Users/will/github/vm-dotnet-devops-assessment/src/Api/Api.csproj",
+        "projectPath": "/Users/will/github/vm-dotnet-devops-assessment/src/api/Api.csproj",
         "packagesPath": "/Users/will/.nuget/packages/",
-        "outputPath": "/Users/will/github/vm-dotnet-devops-assessment/src/Api/obj/",
+        "outputPath": "/Users/will/github/vm-dotnet-devops-assessment/src/api/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/will/.nuget/NuGet/NuGet.Config"

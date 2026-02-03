@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "OjcwdO3Jv6Q=",
+  "dgSpecHash": "GiqRUbfpbL0=",
   "success": true,
-  "projectFilePath": "/Users/will/github/vm-dotnet-devops-assessment/src/Api/Api.csproj",
+  "projectFilePath": "/Users/will/github/vm-dotnet-devops-assessment/src/api/Api.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
