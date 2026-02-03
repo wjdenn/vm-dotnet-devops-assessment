@@ -1,0 +1,15 @@
+replicaCount: 1
+
+image:
+  repository: vm-dotnet-api
+  tag: dev
+
+ingress:
+  hosts:
+    - host: vm-dotnet-api.dev.local
+      paths:
+        - path: /
+          pathType: Prefix
+
+autoscaling:
+  enabled: false
