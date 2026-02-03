@@ -31,4 +31,4 @@ jobs:
                     --create-namespace \
                     -f ./helm/app-chart/values.yaml \
                     -f ./helm/app-chart/values-dev.yaml \
-                    --set image.tag=${{ github.sh }}
+                    --set image.tag=${{ github.sha }}
