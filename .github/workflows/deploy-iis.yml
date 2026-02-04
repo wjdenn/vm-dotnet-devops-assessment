@@ -1,0 +1,29 @@
+name: Deploy to IIS
+
+on:
+    workflow_dispatch:
+    workflow_run:
+        workflows: ["Build and Test"]
+        types:
+            - completed
+
+jobs:
+    deploy:
+        if: ${{ github.event.workflow_run.conclusion == 'success' }}
+        runs-on: windows-latest
+    
+        steps:
+            - name: Checkout Source
+              uses: actions/checkout@v4
+
+            - name: Setup .NET
+              uses: actions/setup-dotnet@v4
+              with:
+                dotnet-version: "8.0.x"
+            
+            - name: Run IIS Deployment Script
+              run: |
+                  Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
+                  cd iis
+                  .\deploy.ps1
+              shell: powershell
