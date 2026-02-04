@@ -100,7 +100,9 @@ if (-not $binding){
     $binding = Get-WebBinding -Name $SiteName -Protocol https
 }
 
-$binding.AddSslCertificate($cert.Thumbprint, "My")
+if (-not $binding.CertificateHash) {
+    $binding.AddSslCertificate($cert.Thumbprint, "My")
+}
 
 # Restart Pool
 Restart-WebAppPool -Name $AppPoolName
