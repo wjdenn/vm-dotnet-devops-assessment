@@ -1,8 +1,16 @@
+using System.Net.Http.Metrics;
 using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
+using Prometheus;
 
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
+app.UseHttpMetrics();
+
+var statsRequests = Metrics.CreateCounter(
+    "stats_endpoint_requests_total",
+    "Number of requests sent to the /stats endpoint"
+);
 
 var version = Assembly.GetExecutingAssembly()
     .GetName()
@@ -20,6 +28,7 @@ app.MapGet("/healthz", () =>
 
 app.MapGet("/stats", () =>
 {
+    statsRequests.Inc();
     var average = data.Average();
 
     return Results.Ok(new
@@ -30,4 +39,5 @@ app.MapGet("/stats", () =>
     });
 });
 
+app.MapMetrics();
 app.Run();
