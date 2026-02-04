@@ -14,8 +14,9 @@ RUN dotnet publish -c Release -o /out /p:UseAppHost=false
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
 
-RUN addgroup --system appgroup && adduser --system appuser --ingroup appgroup
-USER appuser
+RUN addgroup --system --gid 10001 appgroup \
+    && adduser --system --uid 10001 --ingroup appgroup appuser
+USER 10001
 
 COPY --from=build /out ./
 
