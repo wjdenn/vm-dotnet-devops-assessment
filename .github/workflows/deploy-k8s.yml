@@ -3,7 +3,7 @@ name: Deploy to K8s (Dev)
 on:
     workflow_dispatch:
     workflow_run:
-        workflows: ["Buil and Test"]
+        workflows: ["Build and Test"]
         types:
             - completed
 jobs:
